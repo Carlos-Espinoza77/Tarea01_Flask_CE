@@ -1,0 +1,21 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-902-970
+127.0.0.1 - - [27/Jul/2026 21:50:59] "GET / HTTP/1.1" 200 -
+ * Detected change in 'D:\\py\\Tarea01_Flask_CE\\app\\config.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "D:\py\Tarea01_Flask_CE\main.py", line 1, in <module>
+    from app import create_app
+  File "D:\py\Tarea01_Flask_CE\app\__init__.py", line 2, in <module>
+    from app.config import Config
+  File "D:\py\Tarea01_Flask_CE\app\config.py", line 4, in <module>
+    class Config:
+    ...<7 lines>...
+        DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///bdatos.db")
+  File "D:\py\Tarea01_Flask_CE\app\config.py", line 7, in Config
+    raise RuntimeError("SECRET_KEY environment variable is required")
+RuntimeError: SECRET_KEY environment variable is required

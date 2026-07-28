@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Usuarios{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 1rem; background: #eef2f7; color: #1f2937; }
+        header, main { max-width: 900px; margin: 0 auto; }
+        header { padding: 1rem 0; }
+        nav a { margin-right: 1rem; color: #2563eb; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        table { border-collapse: collapse; width: 100%; background: #ffffff; }
+        th, td { border: 1px solid #d1d5db; padding: 0.75rem; text-align: left; }
+        th { background: #f8fafc; }
+        form.inline { display: inline; }
+        .card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 10px; padding: 1.25rem; margin: 0.5rem 0; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
+        .field { margin-bottom: 0.75rem; }
+        .field label { display: block; font-weight: 700; margin-bottom: 0.25rem; }
+        .field input, .field textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; }
+        button { cursor: pointer; background: #2563eb; color: #ffffff; border: none; padding: 0.75rem 1rem; border-radius: 8px; }
+        button:hover { background: #1d4ed8; }
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('main.home') }}">Inicio</a>
+            <a href="{{ url_for('main.list_users') }}">Listado de usuarios</a>
+            <a href="{{ url_for('main.new_user') }}">Crear usuario</a>
+            <a href="{{ url_for('main.api_client') }}">API JSON</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

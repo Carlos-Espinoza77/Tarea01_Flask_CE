@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Cliente API{% endblock %}
+
+{% block head %}
+<script src="https://unpkg.com/htmx.org@1.9.4"></script>
+<script src="https://unpkg.com/hyperscript.org@0.9.10"></script>
+<script>
+function renderUsers(payload){
+    // Mostrar siempre JSON formateado (array u objeto)
+    const pretty = JSON.stringify(payload, null, 2);
+    document.getElementById('api-result').innerHTML = '<pre>'+pretty+'</pre>';
+}
+
+function escapeHtml(unsafe){
+    if(unsafe === null || unsafe === undefined) return '';
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+async function fetchAndRender(url){
+    try{
+        const res = await fetch(url);
+        if(!res.ok){
+            const txt = await res.text();
+            document.getElementById('api-result').textContent = `Error ${res.status}: ${txt}`;
+            return;
+        }
+        const data = await res.json();
+        renderUsers(data);
+    }catch(e){
+        document.getElementById('api-result').textContent = 'Error: '+e;
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Cliente API</h1>
+<div class="card">
+    <section>
+        <h2>Listar todos los usuarios</h2>
+        <button type="button" onclick="fetchAndRender('{{ url_for('main.api_list_users') }}')">Cargar usuarios</button>
+    </section>
+
+    <section>
+        <h2>Buscar usuario por ID</h2>
+        <form id="search-by-id-form" onsubmit="event.preventDefault(); (function(){ const id = this.querySelector('[name=user_id]').value; fetchAndRender('/api/users/'+encodeURIComponent(id)); }).call(this);">
+            <div class="field">
+                <label for="user_id">ID</label>
+                <input id="user_id" name="user_id" type="number" required>
+            </div>
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Buscar por nombre</h2>
+        <form id="search-by-name-form" onsubmit="event.preventDefault(); (function(){ const name = this.querySelector('[name=given_name]').value; fetchAndRender('{{ url_for('main.api_search_users') }}?given_name='+encodeURIComponent(name)); }).call(this);">
+            <div class="field">
+                <label for="given_name">Nombre</label>
+                <input id="given_name" name="given_name" type="text" required>
+            </div>
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Resultado API</h2>
+        <div id="api-result">
+            <p>Haz clic en una acción para ver resultados.</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

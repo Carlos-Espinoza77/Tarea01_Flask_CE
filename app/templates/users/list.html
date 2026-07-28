@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de usuarios{% endblock %}
+
+{% block content %}
+<h1>Listado de usuarios</h1>
+{% if users %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.dni }}</td>
+            <td>{{ user.given_name }}</td>
+            <td>{{ user.family_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{{ url_for('main.user_detail', user_id=user.id) }}">Ver</a>
+                <a href="{{ url_for('main.edit_user', user_id=user.id) }}">Editar</a>
+                <form class="inline" action="{{ url_for('main.delete_user', user_id=user.id) }}" method="post">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay usuarios registrados.</p>
+{% endif %}
+{% endblock %}

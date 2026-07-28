@@ -1,0 +1,14 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Página principal{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Gestión de Usuarios</h1>
+    <p>Una interfaz simple para crear, consultar, editar y eliminar usuarios.</p>
+    <div>
+        <a href="{{ url_for('main.list_users') }}"><button>Ver listado de usuarios</button></a>
+        <a href="{{ url_for('main.new_user') }}"><button>Crear nuevo usuario</button></a>
+    </div>
+</section>
+{% endblock %}

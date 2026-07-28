@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de usuario{% endblock %}
+
+{% block content %}
+<h1>Detalle de usuario</h1>
+<div class="card">
+    <dl>
+        <dt>ID</dt>
+        <dd>{{ user.id }}</dd>
+        <dt>DNI</dt>
+        <dd>{{ user.dni }}</dd>
+        <dt>Nombre</dt>
+        <dd>{{ user.given_name }}</dd>
+        <dt>Apellido</dt>
+        <dd>{{ user.family_name }}</dd>
+        <dt>Email</dt>
+        <dd>{{ user.email }}</dd>
+        <dt>Teléfono</dt>
+        <dd>{{ user.phone_number }}</dd>
+        <dt>Dirección</dt>
+        <dd>{{ user.address }}</dd>
+        <dt>Creado</dt>
+        <dd>{{ user.created_at }}</dd>
+        <dt>Actualizado</dt>
+        <dd>{{ user.updated_at }}</dd>
+    </dl>
+</div>
+<form action="{{ url_for('main.delete_user', user_id=user.id) }}" method="post">
+    <button type="submit">Eliminar usuario</button>
+</form>
+{% endblock %}
