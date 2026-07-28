@@ -6,7 +6,7 @@ Aplicación web desarrollada con **Python** y **Flask** que implementa un **CRUD
 
 # Descripción del proyecto
 
-Esta aplicación fue desarrollada como parte de la Tarea 01 del curso de Flask.
+Esta aplicación fue desarrollada como parte del cursp Python Api Developer.
 
 El objetivo es aplicar buenas prácticas de desarrollo web utilizando:
 
@@ -17,7 +17,7 @@ El objetivo es aplicar buenas prácticas de desarrollo web utilizando:
 - Control de versiones con Git y GitHub
 - Variables de entorno mediante `.env`
 
-La aplicación permite administrar usuarios mediante operaciones CRUD (Crear, Consultar, Actualizar y Eliminar) y expone endpoints que devuelven información en formato JSON.
+Esta aplicación permite administrar varios usuarios mediante operaciones CRUD (Crear, Consultar, Actualizar y Eliminar) y con endpoints que devuelven información en formato JSON.
 
 ---
 
@@ -119,11 +119,11 @@ http://127.0.0.1:5000
 
 ## API JSON
 
-![alt text](image-4.png)
+![alt text](image-6.png)
 
 ---
 
-# Explicación breve de la arquitectura utilizada
+# Resumen de la arquitectura utilizada
 
 El proyecto utiliza una arquitectura modular para separar las responsabilidades de la aplicación.
 
@@ -160,13 +160,13 @@ TAREA01_FLASK_CE/
 ### Descripción de la arquitectura
 
 | Carpeta o archivo | Descripción |
-|-------------------|-------------|
-| **app/database** | Contiene los modelos y la configuración de la base de datos. |
-| **app/routes** | Define las rutas del CRUD y de la API. |
+|-------------------|------------- |
+| **app/database**  | Contiene los modelos y la configuración de la base de datos. |
+| **app/routes**    | Define las rutas del CRUD y de la API. |
 | **app/templates** | Contiene las plantillas HTML de la aplicación. |
-| **app/static** | Almacena los archivos CSS, JavaScript e imágenes. |
-| **app/utils** | Incluye funciones auxiliares reutilizables. |
-| **config.py** | Configuración general de la aplicación. |
-| **main.py** | Punto de entrada para ejecutar la aplicación. |
+| **app/static**    | Almacena los archivos CSS, JavaScript e imágenes. |
+| **app/utils**     | Incluye funciones auxiliares reutilizables. |
+| **config.py**     | Configuración general de la aplicación. |
+| **main.py**       | Punto de entrada para ejecutar la aplicación. |
 
 La estructura modular facilita el mantenimiento, la reutilización del código y la escalabilidad del proyecto.
